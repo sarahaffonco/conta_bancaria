@@ -14,7 +14,7 @@ export function main() {
         console.log("*****************************************************");
         console.log("                                                     ");
         console.log("            1️⃣  Criar Conta                          ");
-        console.log("            2️⃣  todas as Contas               ");
+        console.log("            2️⃣  todas as Contas                      ");
         console.log("            2️⃣  Buscar Conta por Numero              ");
         console.log("            4️⃣  Atualizar Dados da Conta             ");
         console.log("            5️⃣  Apagar Conta                         ");
