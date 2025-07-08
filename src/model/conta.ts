@@ -44,4 +44,43 @@ export class Conta {
     public setSaldo(value: number) {
         this._saldo = value;
     }
+    public sacar(valor: number): boolean {
+
+        if (this._saldo < valor) {
+            console.log("\n ❌ Saldo Insuficiente!");
+            return false;
+        }
+
+        this._saldo = this._saldo - valor;
+        return true;
+    }
+
+    public depositar(valor: number): void {
+        this._saldo = this._saldo + valor;
+    }
+
+    public visualizar(): void {
+
+        let tipo: string = "";
+
+        switch (this._tipo) {
+            case 1:
+                tipo = "Conta Corrente";
+                break;
+            case 2:
+                tipo = "Conta Poupança";
+                break;
+        }
+
+        console.log("\n\n*****************************************************");
+        console.log("🏦  Dados da Conta:");
+        console.log("*****************************************************");
+        console.log("🔢  Numero da Conta: " + this._numero);
+        console.log("🔰  Agência: " + this._agencia);
+        console.log("♨️  Tipo da Conta: " + tipo);
+        console.log("👩 👨Titular: " + this._titular);
+        console.log("💲 Saldo: " + this._saldo.toFixed(2));
+
+    }
+
 }
