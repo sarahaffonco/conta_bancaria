@@ -1,13 +1,28 @@
-import { colors } from "./src/util/colors";
-import { Conta } from "./src/model/conta";
+import { colors } from "./src/util/Colors";
+import { ContaCorrente } from "./src/model/ContaCorrente";
+import { ContaPoupanca } from "./src/model/ContaPoupanca";
 import read = require('readline-sync');
 
-const conta: Conta = new Conta(1, 123, 1, "Sarah", 100);
-conta.visualizar();
-conta.sacar(500);
-conta.visualizar();
-conta.depositar(10000);
-conta.visualizar();
+// const conta: Conta = new Conta(1, 123, 1, "Sarah", 100);
+// conta.visualizar();
+// conta.sacar(500);
+// conta.visualizar();
+// conta.depositar(10000);
+// conta.visualizar();
+
+const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Flavia", 1000, 50);
+contacorrente.visualizar();
+contacorrente.sacar(2000);
+contacorrente.visualizar();
+contacorrente.depositar(1000);
+contacorrente.visualizar();
+
+const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "João", 1000, 10);
+contapoupanca.visualizar();
+contapoupanca.sacar(200);
+contapoupanca.visualizar();
+contapoupanca.depositar(1000);
+contapoupanca.visualizar();
 
 export function main() {
     let opcao: number;
