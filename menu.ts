@@ -1,4 +1,4 @@
-import { colors } from "./src/util/colors";
+import { colors } from "./src/util/Colors";
 import { ContaCorrente } from "./src/model/ContaCorrente";
 import { ContaPoupanca } from "./src/model/ContaPoupanca";
 import { ContaController } from "./src/controller/ContaController";

@@ -1,6 +1,6 @@
 import { ContaRepository } from "../repository/ContaRepository";
 import { Conta } from "../model/Conta";
-import { colors } from "../util/colors";
+import { colors } from "../util/Colors";
 
 export class ContaController implements ContaRepository {
 
