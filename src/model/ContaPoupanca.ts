@@ -4,17 +4,31 @@ export class ContaPoupanca extends Conta {
 
     private _aniversario: number;
 
-    constructor(numero: number, agencia: number, tipo: number, titular: string,
-        saldo: number, aniversario: number) {
+    // validação aniversario
+    private validarDiaAniversario(dia: number): number {
+        if (dia < 1 || dia > 31) {
+            throw new Error("Dia do aniversário deve estar entre 1 e 31.");
+        }
+        return dia;
+    }
+
+    constructor(
+        numero: number,
+        agencia: number,
+        tipo: number,
+        titular: string,
+        saldo: number,
+        aniversario: number
+    ) {
         super(numero, agencia, tipo, titular, saldo);
-        this._aniversario = aniversario;
+        this._aniversario = this.validarDiaAniversario(aniversario);
     }
     public get aniversario() {
         return this._aniversario;
     }
 
     public set aniversario(aniversario: number) {
-        this._aniversario = aniversario;
+        this._aniversario = this.validarDiaAniversario(aniversario); ;
     }
 
     public sacar(valor: number): boolean {
