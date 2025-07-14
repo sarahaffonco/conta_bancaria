@@ -1,6 +1,6 @@
 import { ContaRepository } from "../repository/ContaRepository";
 import { Conta } from "../model/Conta";
-import { colors } from "../util/Colors";
+import { colors } from "../util/colors";
 
 export class ContaController implements ContaRepository {
 
@@ -99,5 +99,4 @@ export class ContaController implements ContaRepository {
 
         return null;
     }
-
 }
