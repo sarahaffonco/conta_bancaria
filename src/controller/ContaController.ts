@@ -69,16 +69,54 @@ export class ContaController implements ContaRepository {
         }
     }
 
-    sacar(numero: number, valor: number): void {
-        // Implementação para sacar de uma conta
+    public sacar(numero: number, valor: number): void {
+        let conta = this.buscarContaPorNumero(numero);
+
+        if (conta != null) {
+
+            if (conta.sacar(valor) == true) {
+                console.log(colors.green);
+                console.log(`Saque de R$ ${valor} realizado com sucesso na conta número ${numero}.`);
+                console.log(colors.reset);
+            }
+        } else {
+            console.log(colors.red);
+            console.log('❌ Conta não encontrada. Número inválido ou conta não existe.');
+            console.log(colors.reset);
+        }
     }
 
-    depositar(numero: number, valor: number): void {
-        // Implementação para depositar em uma conta
+    public depositar(numero: number, valor: number): void {
+        let conta = this.buscarContaPorNumero(numero);
+
+        if (conta != null) {
+            conta.depositar(valor);
+            console.log(colors.green);
+            console.log(`Depósito de R$ ${valor} realizado com sucesso na conta número ${numero}.`);
+            console.log(colors.reset);
+        } else {
+            console.log(colors.red);
+            console.log('❌ Conta não encontrada. Número inválido ou conta não existe.');
+            console.log(colors.reset);
+        }
     }
 
-    transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
-        // Implementação para transferir entre contas
+    public transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
+        let contaOrigem = this.buscarContaPorNumero(numeroOrigem);
+        let contaDestino = this.buscarContaPorNumero(numeroDestino);
+
+        if (contaOrigem != null && contaDestino != null) {
+            if (contaOrigem.sacar(valor) == true) {
+                contaDestino.depositar(valor);
+                console.log(colors.green);
+                console.log(`Transferência de R$ ${valor} realizada com sucesso da conta número ${numeroOrigem} para a conta número ${numeroDestino}.`);
+                console.log(colors.reset);
+            }
+        } else {
+            console.log(colors.red);
+            console.log('❌ Conta não encontrada. Número inválido ou conta não existe.');
+            console.log(colors.reset);
+        }
     }
 
     // Métodos auxiliares
@@ -99,4 +137,5 @@ export class ContaController implements ContaRepository {
 
         return null;
     }
+
 }
