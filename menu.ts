@@ -43,7 +43,7 @@ function validarValorIntervalo(
 export function main() {
     let contas: ContaController = new ContaController();
 
-    let opcao, numero, agencia, tipo, saldo, limite, aniversario: number;
+    let opcao, numero, agencia, tipo, saldo, limite, aniversario: number, valor, numeroDestino:number;
     let titular: string;
     let continuar: boolean = true;
 
@@ -230,22 +230,57 @@ export function main() {
                 break;
 
             case 6:
-                console.log(colors.magenta);
-                console.log("\nInsira os dados da conta (apenas números)");
+                console.log(colors.blue);
+                console.log("\nSaque de valores");
                 console.log(colors.reset);
+
+                console.log(colors.magenta);
+                console.log("\nInsira os dados da conta origem do saque (apenas números)");
+                numero = read.questionInt("🔵 ");
+
+                console.log("\nInsira o valor do saque (apenas números)");
+                valor = validarValorPositivo("🔵 R$");
+
+                contas.sacar(numero, valor);
+                console.log(colors.reset);
+
                 keyPress();
                 break;
 
             case 7:
+                console.log(colors.blue);
+                console.log("\nDeposito de valores");
+                console.log(colors.reset);
+
                 console.log(colors.magenta);
                 console.log("\nInsira os dados da conta origem do depósito (apenas números)");
+                numero = read.questionInt("🔵 ");
+
+                console.log("\nInsira o valor do depósito (apenas números)");
+                valor = validarValorPositivo("🔵 R$");
+
+                contas.depositar(numero, valor);
+
                 console.log(colors.reset);
                 keyPress();
                 break;
 
             case 8:
+                console.log(colors.blue);
+                console.log("\Transferencia de valores");
+                console.log(colors.reset);
+
                 console.log(colors.magenta);
                 console.log("\nInsira os dados da conta origem da transferência (apenas números)");
+                numero = read.questionInt("🔵 ");
+
+                console.log("\nInsira os dados da conta destino da transferência (apenas números)");
+                numeroDestino = read.questionInt("🔵 ");
+
+                console.log("\nInsira o valor da transferência (apenas números)");
+                valor = validarValorPositivo("🔵 R$");
+
+                contas.transferir(numero, numeroDestino, valor);
                 console.log(colors.reset);
                 keyPress();
                 break;
